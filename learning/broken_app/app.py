@@ -2,8 +2,8 @@
 INTENTIONAL VULNERABILITIES — for learning only.
 Do NOT deploy this file. Security CI excludes learning/broken_app.
 
-Walk through docs/LEARNING_PATH.md and docs/before-after.md
-to understand each issue and the secure fix in app/main.py.
+Walk through docs/LEARNING.md to understand each issue
+and the secure fix in app/main.py.
 """
 
 from __future__ import annotations

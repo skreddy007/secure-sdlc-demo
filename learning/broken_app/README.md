@@ -1,15 +1,5 @@
-# Broken lab — excluded from main CI on purpose.
-# Use these steps when you want to *see scanners fail*:
+# Broken lab
 
-# 1) Secret scan
-#    gitleaks detect --source learning/broken_app --no-git -v
+Intentional vulnerabilities. **Do not deploy.** Main CI excludes this folder.
 
-# 2) SAST
-#    semgrep --config p/python --config p/flask learning/broken_app
-
-# 3) SCA (dependencies)
-#    trivy fs --severity-source CRITICAL,HIGH learning/broken_app
-
-# 4) Container (after building)
-#    docker build -t notes-broken ./learning/broken_app
-#    trivy image --severity CRITICAL,HIGH notes-broken
+Study guide: [docs/LEARNING.md](../../docs/LEARNING.md) (section “Make scanners fail”).

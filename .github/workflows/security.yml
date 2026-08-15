@@ -1,7 +1,7 @@
 name: Security Gates
 
 # Secure SDLC CI: SAST + secrets + SCA + container + SBOM
-# Beginners: read docs/LEARNING_PATH.md Step 4 before changing this file.
+# Policy and gates: docs/PROJECT.md. Learning path: docs/LEARNING.md.
 
 on:
   push:
