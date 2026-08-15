@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search — Team Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Search results</h1>
+      <p class="sub">Query: <code>{{ q }}</code></p>
+      <p><a href="{{ url_for('index') }}">← Back</a></p>
+    </header>
+
+    <section class="card">
+      {% if notes %}
+        <ul class="notes">
+          {% for note in notes %}
+            <li>
+              <strong>{{ note.title }}</strong>
+              <span class="meta">#{{ note.id }} · {{ note.created_at }}</span>
+              <p>{{ note.body }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="empty">No matches.</p>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>

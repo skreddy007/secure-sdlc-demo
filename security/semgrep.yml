@@ -1,0 +1,31 @@
+# Semgrep policy for the secure Team Notes app.
+# Docs: https://semgrep.dev/docs/
+
+rules:
+  # Start from community packs via CI flags; custom rules live here too.
+
+  - id: team-notes-no-debug-true
+    languages: [python]
+    severity: ERROR
+    message: "Do not enable Flask debug mode in committed application code."
+    patterns:
+      - pattern: app.run(..., debug=True, ...)
+    paths:
+      include:
+        - app/**
+
+  - id: team-notes-no-render-template-string-user-input
+    languages: [python]
+    severity: ERROR
+    message: "Avoid render_template_string with request data (XSS risk). Use templates + autoescape."
+    patterns:
+      - pattern-either:
+          - pattern: render_template_string(..., request.$W, ...)
+          - pattern: render_template_string(f"...{request.$W}...")
+          - pattern: |
+              $X = request.$W
+              ...
+              render_template_string(..., $X, ...)
+    paths:
+      include:
+        - app/**

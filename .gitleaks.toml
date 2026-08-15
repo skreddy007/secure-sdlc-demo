@@ -1,0 +1,16 @@
+# Copy of security/gitleaks.toml for tools that auto-detect a root config.
+# Prefer editing security/gitleaks.toml and keeping these in sync.
+
+title = "secure-sdlc-demo"
+
+[allowlist]
+description = "Demo placeholders that are not real credentials"
+paths = [
+  '''learning/broken_app/.*''',
+  '''docs/.*''',
+  '''\.env\.example''',
+]
+regexes = [
+  '''dev-only-change-me''',
+  '''replace-me-with-a-long-random-string''',
+]

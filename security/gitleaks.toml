@@ -1,0 +1,16 @@
+# Gitleaks config — https://github.com/gitleaks/gitleaks
+# Keep allowlists tiny and documented in suppressions.md
+
+title = "secure-sdlc-demo"
+
+[allowlist]
+description = "Demo placeholders that are not real credentials"
+paths = [
+  '''learning/broken_app/.*''',
+  '''docs/.*''',
+  '''\.env\.example''',
+]
+regexes = [
+  '''dev-only-change-me''',
+  '''replace-me-with-a-long-random-string''',
+]

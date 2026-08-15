@@ -1,0 +1,5 @@
+# Intentionally outdated / vulnerable pins for SCA learning demos.
+# Scan this file with Trivy locally — do not use in the main app.
+Flask==2.0.1
+Jinja2==2.11.3
+Werkzeug==2.0.1

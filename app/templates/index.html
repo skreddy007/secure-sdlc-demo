@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Team Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Team Notes</h1>
+      <p class="sub">Secure SDLC demo app — create and search notes.</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="flash">
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <section class="card">
+      <h2>Add a note</h2>
+      <form method="post" action="{{ url_for('create_note') }}">
+        <label>
+          Title
+          <input name="title" maxlength="120" required />
+        </label>
+        <label>
+          Body
+          <textarea name="body" rows="4" maxlength="2000" required></textarea>
+        </label>
+        <button type="submit">Save</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Search</h2>
+      <form method="get" action="{{ url_for('search_notes') }}">
+        <label>
+          Query
+          <input name="q" placeholder="e.g. deploy" />
+        </label>
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>All notes</h2>
+      {% if notes %}
+        <ul class="notes">
+          {% for note in notes %}
+            <li>
+              <strong>{{ note.title }}</strong>
+              <span class="meta">#{{ note.id }} · {{ note.created_at }}</span>
+              <p>{{ note.body }}</p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="empty">No notes yet.</p>
+      {% endif %}
+    </section>
+  </main>
+</body>
+</html>
