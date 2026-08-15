@@ -17,6 +17,8 @@ You build a tiny Flask notes app, then protect it with the same *kinds* of contr
 - `app/` — **secure** version (resume demo, CI must pass)
 - `learning/broken_app/` — **intentionally vulnerable** lab (practice seeing scanners fail)
 
+Git activity for this repo is posted to Slack `#secure-sdlc-git-updates`.
+
 ---
 
 ## Start here (beginners)
